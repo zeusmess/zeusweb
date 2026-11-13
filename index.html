@@ -1,114 +1,96 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>ZEUSMESS</title>
-  <meta name="claude:viewport-fit-sides" content="cover">
-  <meta name="theme-color" content="#000000">
-  <meta name="description" content="Youssef Ayman (ZEUSMESS): video editor, photographer and AI creative.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=Pixelify+Sans:wght@400;500;700&family=Noto+Naskh+Arabic:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZEUSMESS</title>
+<meta name="theme-color" content="#000000">
+<meta name="description" content="Youssef Ayman (ZEUSMESS): video editor, photographer and AI creative.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZEUSMESS · Youssef Ayman">
+<meta property="og:description" content="Video editor, photographer and AI creative. Starbucks campaigns, AI films and photo series.">
+<meta property="og:image" content="https://zeusmess.github.io/zeusweb/media/showreel.webp">
+<meta property="og:url" content="https://zeusmess.github.io/zeusweb/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="media/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="scan" aria-hidden="true"></div>
+<!-- Backdrop: the work itself glows behind the glass -->
+<div class="bg" aria-hidden="true">
+  <canvas id="ambient" width="64" height="36"></canvas>
+  <div class="bg-dots"></div>
+  <div class="bg-vignette"></div>
+</div>
 
-  <!-- Boot screen: shows the logo, then gets out of the way on its own -->
-  <div class="boot" id="boot" aria-hidden="true">
-    <div class="boot-eye"><span class="logo-mark"><img class="logo-eye" src="media/logo-eye.png" alt="" draggable="false"><img class="logo-iris" src="media/logo-iris.png" alt="" draggable="false"></span></div>
-    <div class="boot-bar"><span></span></div>
-    <p class="boot-hint" id="bootHint">PRESS START</p>
+<!-- Lock screen -->
+<div class="lock" id="lock" role="dialog" aria-modal="true" aria-labelledby="lockBrand">
+  <div class="lock-tools">
+    <button class="chip glass" id="lockSound" type="button"></button>
+    <button class="chip glass" id="lockLang" type="button"></button>
   </div>
-
-  <header class="nav" id="nav">
-    <a href="#top" class="brand" aria-label="ZEUSMESS"><span class="brand-eye"><span class="logo-mark"><img class="logo-eye" src="media/logo-eye.png" alt="" draggable="false"><img class="logo-iris" src="media/logo-iris.png" alt="" draggable="false"></span></span><span class="brand-name">ZEUSMESS</span></a>
-    <nav class="nav-links" id="navLinks"></nav>
-    <button class="pbtn icon-btn" id="soundBtn" type="button" aria-label="Sound"></button>
-    <button class="pbtn" id="langBtn" type="button" aria-label="Switch language"></button>
-  </header>
-
-  <main>
-    <section class="hero" id="top">
-      <div class="floaters" id="floaters" aria-hidden="true"></div>
-      <div class="hero-eye" aria-hidden="true"><span class="logo-mark"><img class="logo-eye" src="media/logo-eye.png" alt="" draggable="false"><img class="logo-iris" src="media/logo-iris.png" alt="" draggable="false"></span></div>
-      <p class="tag"><span class="blink"></span> <span data-i18n="available"></span></p>
-      <h1 class="title" data-bind="nickname"></h1>
-      <p class="hero-name" data-bind="name"></p>
-      <ul class="roles" id="roles"></ul>
-      <p class="tagline" data-bind="tagline"></p>
-      <div class="actions">
-        <a href="#starbucks" class="pbtn solid" data-i18n="ctaWorks" data-sfx="click"></a>
-        <a href="#contact" class="pbtn" data-i18n="ctaContact" data-sfx="click"></a>
-      </div>
-      <div class="window reel-win">
-        <div class="win-bar"><span class="win-eye" data-eye="15"></span><span class="win-title">SHOWREEL.MP4</span><span class="win-dots"><i></i><i></i><i></i></span></div>
-        <div class="reel" id="reel"></div>
-      </div>
-    </section>
-
-    <div class="tapes" aria-hidden="true">
-      <div class="tape t1"><div class="tape-track" id="tape1"></div></div>
-      <div class="tape t2"><div class="tape-track" id="tape2"></div></div>
-    </div>
-
-    <section class="section" id="services">
-      <div class="head">
-        <span class="kicker" data-i18n="servicesKicker"></span>
-        <h2 data-i18n="servicesTitle"></h2>
-      </div>
-      <div class="inventory" id="inventory"></div>
-    </section>
-
-    <div id="collections"></div>
-
-    <section class="section" id="about">
-      <div class="divider" aria-hidden="true"><span data-eye="15"></span></div>
-      <div class="player">
-        <div class="player-photo" id="aboutImg"><span class="player-tag">PLAYER 1</span></div>
-        <div class="player-body">
-          <span class="kicker" data-i18n="aboutKicker"></span>
-          <h2 class="player-name"><span data-bind="name"></span><em>ZEUSMESS</em></h2>
-          <p class="player-text" data-bind="about.text"></p>
-          <ul class="chips" id="skills"></ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="continue">
-        <div class="floaters" id="ctaFloaters" aria-hidden="true"></div>
-        <div class="continue-eye" data-eye="31" aria-hidden="true"></div>
-        <span class="kicker blink-text">CONTINUE?</span>
-        <h2 class="continue-title" data-i18n="contactTitle"></h2>
-        <p class="continue-lead" data-i18n="contactLead"></p>
-        <div class="actions" id="contactActions"></div>
-        <p class="phone" id="phone"></p>
-        <button class="copy-mail" id="copyMail" type="button" hidden></button>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <a href="#top" class="foot-eye" aria-label="Back to top" data-eye="15"></a>
-    <span><bdi>© <span id="year"></span> ZEUSMESS</bdi> · <span data-bind="name"></span></span>
-  </footer>
-
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" hidden>
-    <div class="lb-frame">
-      <div class="win-bar"><span class="win-eye" data-eye="15"></span><span class="win-title" id="lbTitle"></span><button class="lb-x pbtn icon-btn" id="lbClose" type="button" aria-label="Close"></button></div>
-      <div class="lb-media" id="lbMedia"></div>
-      <div class="lb-foot">
-        <button class="pbtn icon-btn" id="lbPrev" type="button" aria-label="Previous"></button>
-        <div class="lb-info"><span class="lb-count" id="lbCount"></span><p id="lbDesc"></p></div>
-        <button class="pbtn icon-btn" id="lbNext" type="button" aria-label="Next"></button>
-      </div>
-    </div>
+  <div class="lock-clock">
+    <p class="lock-date" id="lockDate"></p>
+    <p class="lock-time" id="lockTime">00:00</p>
   </div>
+  <div class="lock-eye" aria-hidden="true"></div>
+  <p class="lock-brand" id="lockBrand"><b>ZEUSMESS</b><span data-bind="name"></span></p>
+  <div class="lock-notes" id="lockNotes"></div>
+  <div class="lock-foot">
+    <div class="unlock glass" id="unlock">
+      <span class="unlock-text" id="unlockText"></span>
+      <button class="unlock-knob" id="unlockKnob" type="button"></button>
+    </div>
+    <span class="home-bar" aria-hidden="true"></span>
+  </div>
+</div>
 
-  <script src="content.js"></script>
-  <script src="logo.js"></script>
-  <script src="app.js"></script>
+<!-- Dynamic Island -->
+<header class="island" id="island">
+  <button class="isl-face" id="islBtn" type="button" aria-expanded="false" aria-controls="islPanel">
+    <span class="isl-eye" aria-hidden="true"></span>
+    <span class="isl-no" id="islNo">01</span>
+    <span class="isl-label" id="islLabel" aria-live="polite"></span>
+    <span class="isl-viz" id="islViz" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+  </button>
+  <div class="isl-panel" id="islPanel" hidden></div>
+</header>
+
+<main class="deck" id="deck"></main>
+
+<nav class="dock glass" id="dock">
+  <span class="dock-lens" id="dockLens" aria-hidden="true"></span>
+</nav>
+
+<!-- Media viewer -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <div class="sheet-top">
+    <div class="sheet-head">
+      <span class="sheet-count" id="sheetCount"></span>
+      <h2 class="sheet-title" id="sheetTitle"></h2>
+    </div>
+    <button class="round glass" id="sheetClose" type="button"></button>
+  </div>
+  <div class="sheet-stage" id="sheetStage"></div>
+  <div class="sheet-foot">
+    <button class="round glass" id="sheetPrev" type="button"></button>
+    <p class="sheet-desc" id="sheetDesc"></p>
+    <button class="round glass" id="sheetNext" type="button"></button>
+  </div>
+</div>
+
+<div class="toast glass" id="toast" role="status" aria-live="polite"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><i></i></div>
+<div class="scan" aria-hidden="true"></div>
+
+<script src="content.js"></script>
+<script src="logo.js"></script>
+<script src="lib/gsap.min.js"></script>
+<script src="lib/ScrambleTextPlugin.min.js"></script>
+<script src="sound.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
