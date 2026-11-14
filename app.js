@@ -653,10 +653,11 @@
         h("p", { class: "info-sub", lang: other, dir: other === "ar" ? "rtl" : "ltr" }, g.title[other] || "")),
       h("ul", { class: "tags" }, t(g.tags).map(function (x) { return h("li", null, x); })),
       h("p", { class: "info-desc" }, t(g.desc)),
-      thumbs,
       h("div", { class: "info-foot" },
         h("span", { class: "info-count" }, U.pieces(g.items.length)),
         h("button", { class: "btn glass", type: "button", onclick: function () { openSheet(c, g, st.item); } }, ico("expand", 16), U.open)));
+    // Single-piece projects have no thumbnail strip (native append would print "null")
+    if (thumbs) info.insertBefore(thumbs, info.lastChild);
     if (animate && !REDUCED) G.from(info.children, { opacity: 0, y: 16, duration: .55, stagger: .04, ease: "expo.out", clearProps: "transform,opacity" });
   }
 

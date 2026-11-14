@@ -43,6 +43,18 @@ window.PORTFOLIO = {
       },
       groups: [
         {
+          title: { en: "Red Mode: ON", ar: "الوضع الأحمر اتفعّل" },
+          tags: { ar: ["فيديو AI", "موشن"], en: ["AI Video", "Motion"] },
+          desc: { ar: "أول ما المريلة الحمرا تتربط، الدنيا كلها تتلوّن. إعلان الهوليداي ورجوع التوفي نت.", en: "The moment the red apron is tied, the whole world turns red. The holiday launch and the return of Toffee Nut." },
+          items: [{ v: "red-mode-on", r: 0.562 }]
+        },
+        {
+          title: { en: "Snowed In", ar: "تحت التلج" },
+          tags: { ar: ["فيديو AI", "مونتاج"], en: ["AI Video", "Editing"] },
+          desc: { ar: "مدفون في التلج وسط الجبال: يرمي السمكة، ياخد قهوته، ويقعد يرتاح.", en: "Buried in snow in the mountains: he tosses the fish, grabs his coffee and settles in." },
+          items: [{ v: "snowed-in", r: 0.562 }]
+        },
+        {
           title: { en: "Barista Bear", ar: "دبدوب الباريستا" },
           tags: { ar: ["فيديو AI", "منتج"], en: ["AI Video", "Product"] },
           desc: { ar: "عالم وردي كله فراولة لإطلاق كوباية دبدوب الباريستا.", en: "A pink strawberry world for the Barista Bear tumbler launch." },
@@ -108,6 +120,30 @@ window.PORTFOLIO = {
         en: "Experiments, photo series and AI projects in my own style."
       },
       groups: [
+        {
+          title: { en: "The Secret Mission", ar: "المهمة السرية" },
+          tags: { ar: ["فيلم AI", "كوميدي"], en: ["AI Film", "Comedy"] },
+          desc: { ar: "عصابة في عربية قديمة وسط الضباب، رايحين مهمة سرية جدًا… لدرجة إن محدش فيهم عارفها.", en: "A crew in a vintage car through the fog, off on a mission so secret that none of them knows what it is." },
+          items: [{ v: "secret-mission", r: 1.778 }]
+        },
+        {
+          title: { en: "Slow Burn", ar: "على نار هادية" },
+          tags: { ar: ["فيديو AI", "تلوين"], en: ["AI Video", "Color Grading"] },
+          desc: { ar: "سواقة بالليل غرقانة في الأحمر، وصورة بولارويد فيها نار قدام العين.", en: "A night drive drowned in red, and a Polaroid of fire held over one eye." },
+          items: [{ v: "slow-burn-drive", r: 1.778 }, { v: "slow-burn-polaroid", r: 1.778 }]
+        },
+        {
+          title: { en: "Live Wire", ar: "شحنة" },
+          tags: { ar: ["فيديو AI", "مؤثرات"], en: ["AI Video", "VFX"] },
+          desc: { ar: "ماشي جنب بحر هايج، وفي صدره قلب كهربا بينبض.", en: "Walking past a raging sea, with an electric heart pulsing in his chest." },
+          items: [{ v: "electric-core", r: 0.562 }]
+        },
+        {
+          title: { en: "Stranger", ar: "غريب" },
+          tags: { ar: ["صور AI", "كومبوزيت"], en: ["AI Imagery", "Compositing"] },
+          desc: { ar: "غريب وسط عالم، كل ما فيه بيحاول يبقى شبه بعضه.", en: "A stranger in a world where everything tries to look the same." },
+          items: [{ i: "stranger", r: 1.285 }]
+        },
         {
           title: { en: "The Museum", ar: "المتحف" },
           tags: { ar: ["تصوير", "صور متنوعة"], en: ["Photography", "Mixed"] },
